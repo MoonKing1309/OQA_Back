@@ -2,19 +2,25 @@ const express = require('express')
 const cors = require("cors");
 const app = express();
 const body_parser = require("body-parser");
-const playRouter = require('./route/playRouter')
-const connectDB = require('./data/playConnect')
+const quizRouter = require('./route/quizRouter')
+const userRouter = require('./route/userRouter')
+const resultRouter = require('./route/resultRouter')
+const connectDB = require('./data/dbConnect')
+require('dotenv').config()
 
 
 app.use(body_parser.json())
 app.use(body_parser.urlencoded({extended:true}));
 app.use(cors()); 
 
-app.use('/play',playRouter)
+app.use('/play',quizRouter)
+app.use('',userRouter)
+app.use('',resultRouter)
+
 
 const serverStart = async ()=>{
     try {
-        await connectDB("mongodb+srv://root:root@backenddatabase.3g168cl.mongodb.net/quizDatabase");
+        await connectDB(process.env.MONGO_URI);
         console.log("Connected to Database")
         app.listen(5001,()=>{
             console.log("Server started on 5001")

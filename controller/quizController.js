@@ -104,12 +104,31 @@ const updateQuizAndQues = async (req,res)=>{
         res.status(404).json({success:false,msg:msg})
     }
 }
+
+
+const getOptionSolution = async (req,res)=>{
+    let id = new mongoose.Types.ObjectId(req.params);
+    let msg = []
+    let data = []
+    try {
+        await questionCollection.find({isQuiz:false,quizID:id}).then((res)=>msg=(res)).catch((err)=>msg=(err))
+        for(let i =0;i<msg.length;i++)
+        {
+           data.push(msg[i].optionSolution)
+        }
+
+        res.status(201).json(data)
+    } catch (error) {
+        res.status(404).json({success:false,error:error,msg:msg})
+    }
+}
 module.exports = {
     getAllQuiz,
     createQuiz,
     getQuestions,
     deleteQuiz,
     getQuizAndQues,
-    updateQuizAndQues
+    updateQuizAndQues,
+    getOptionSolution
 
 }

@@ -6,14 +6,16 @@ const {
     getQuestions,
     deleteQuiz,
     getQuizAndQues,
-    updateQuizAndQues
-} = require('../controller/playController')
+    updateQuizAndQues,
+    getOptionSolution
+} = require('../controller/quizController')
 
 
 router.route('').get(getAllQuiz)
 router.route('/adminQuiz').post(createQuiz)
 router.route('/adminEditQuiz/:id').get(getQuizAndQues).put(updateQuizAndQues)
 router.route('/Quiz/:id').get(getQuestions).delete(deleteQuiz)
+router.route('/Quiz/:id/result').get(getOptionSolution)
 
 
 

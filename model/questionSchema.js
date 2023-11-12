@@ -1,10 +1,9 @@
-const { boolean } = require('mathjs')
 const mongoose = require('mongoose')
 
 const questionSchema = new mongoose.Schema({
     quizID:mongoose.Types.ObjectId,
     questionID:String,
-    isQuiz:boolean,
+    isQuiz:Boolean,
     questionText:String,
     optionA:String,
     optionB:String,
