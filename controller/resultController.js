@@ -10,6 +10,7 @@ const saveScore = async (req,res)=>{
     const userID = req.body.userID;
     const userScore = req.body.userScore;
     const quizTime = req.body.quizTime;
+    console.log(quizTime)
     const date =  new Date()
 
     var today = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
