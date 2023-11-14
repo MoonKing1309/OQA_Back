@@ -6,7 +6,8 @@ const resultSchema = new mongoose.Schema({
     quizName:String,
     userName:String,
     userScore: String,
-    quizDate:String
+    quizDate:String,
+    quizTime:String
 },{
     collection:'resultCollection'
 })
