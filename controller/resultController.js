@@ -9,6 +9,7 @@ const saveScore = async (req,res)=>{
     const quizID = id;
     const userID = req.body.userID;
     const userScore = req.body.userScore;
+    const quizTime = req.body.quizTime;
     const date =  new Date()
 
     var today = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
@@ -18,7 +19,7 @@ const saveScore = async (req,res)=>{
     try {
         await quizCollection.findOne({_id:quizID}).then((data)=>quizName=data.quizTitle).catch((err)=>console.log(err))
         await userCollection.findOne({_id:userID}).then((data)=>userName=data.userName).catch((err)=>console.log(err))
-        await resultCollection.create({userID:userID,quizID:quizID,userScore:userScore,quizName:quizName,userName:userName,quizDate:today})
+        await resultCollection.create({userID:userID,quizID:quizID,userScore:userScore,quizName:quizName,userName:userName,quizDate:today,,quizTime:quizTime})
 
         res.status(201).json({success:true})
     } catch (error) {
