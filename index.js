@@ -18,6 +18,10 @@ app.use('',userRouter)
 app.use('',resultRouter)
 
 
+app.get('/',(req,res)=>{
+    res.send("Welcome to Quizzmi backend!")
+})
+
 const serverStart = async ()=>{
     try {
         await connectDB(process.env.MONGO_URI);
