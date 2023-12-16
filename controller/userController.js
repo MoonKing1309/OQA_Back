@@ -88,6 +88,9 @@ const myDetailsUpdate = async (req,res)=>{
                     data=true
                 }
              })
+            .catch((err))=>{
+                res.status(503).json({success:false,msg:error})
+            }
         if(data)
             return res.status(409).json({success:false,msg:"Username already exists"})
         else{
